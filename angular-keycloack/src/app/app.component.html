@@ -1,6 +1,8 @@
 <h1>Welcome</h1>
 
 <div class="navigation">
+  <button *ngIf="isLoggedIn" type="button" (click)="logout()">Log out</button>
+  <button *ngIf="!isLoggedIn" type="button" (click)="login()">Log in</button>
   <h3>
     <a [routerLink]="['/home']"> home </a>
   </h3>
@@ -11,5 +13,7 @@
     <a [routerLink]="['/admin']"> admin </a>
   </h3>
 </div>
+
+<p *ngIf="isLoggedIn" >hello {{ userProfile!.username }}</p>
 
 <router-outlet></router-outlet>

@@ -6,8 +6,8 @@ import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
-  { path: 'user', component: UserComponent },
-  { path: 'admin', component: AdminComponent},
+  { path: 'user', component: UserComponent , canActivate : [AuthGuard] ,   data: { roles: ['user'] } },
+  { path: 'admin', component: AdminComponent , canActivate : [AuthGuard],   data: { roles: ['admin'] }},
   { path: 'home', component: HomeComponent},
   { path: '**', redirectTo: '' }
 ];
