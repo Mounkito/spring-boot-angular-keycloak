@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BilouService } from '../bilou.service';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  message : string = '';
+
+  constructor(private bilouService: BilouService) { }
 
   ngOnInit(): void {
+    this.bilouService.getUser().subscribe( m  => this.message = m.message);
   }
 
 }
