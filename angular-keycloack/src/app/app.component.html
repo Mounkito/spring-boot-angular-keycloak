@@ -6,14 +6,18 @@
   <h3>
     <a [routerLink]="['/home']"> home </a>
   </h3>
-  <h3>
-    <a [routerLink]="['/user']"> user </a>
-  </h3>
-  <h3>
-    <a [routerLink]="['/admin']"> admin </a>
-  </h3>
+  <div *ngIf="isUser()">
+    <h3>
+      <a [routerLink]="['/user']"> user </a>
+    </h3>
+  </div>
+  <div *ngIf="isUser()" >
+    <h3>
+      <a *ngIf="isAdmin()" [routerLink]="['/admin']"> admin </a>
+    </h3>
+  </div>
+
 </div>
 
-<p *ngIf="isLoggedIn" >welcome to :  {{ userProfile!.username }}</p>
 
 <router-outlet></router-outlet>
